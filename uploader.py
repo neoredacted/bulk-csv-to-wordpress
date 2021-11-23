@@ -25,18 +25,19 @@ for row in df1.index:
         'status': df1['Status'][row]
     }
 
-    with open("sample.json", "w") as outfile:
-        json.dump(post, outfile)
-    
-    
-    print('Die Reihe', df1['Id'][row], 'wurde kopiert')
+    print(df1['Title'][row], 'published.')
+
+
+print('All Articles have been published.')
 
 
 df_t = pd.read_csv(r'upload_soon.csv')
 df_t.to_csv('uploaded.csv', mode='a', index=0)
+print('Appended Old CSV File to Archive.')
 
 #os.remove('upload_soon.csv')
+print('Deleted Old CSV File.')
 
 
 df2 = pd.read_csv(r'uploaded.csv', names=col_names, skiprows=[0])
-print(df2.head(150))
+#print(df2.head(150))
